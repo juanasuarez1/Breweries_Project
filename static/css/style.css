@@ -44,3 +44,14 @@ flex-basis: 20%;
     color: #fff;
     text-decoration: none;
 }
+
+body {
+    padding: 0px;
+    margin: 0px;
+  }
+
+#map,
+body,
+html {
+  height: 100%;
+}

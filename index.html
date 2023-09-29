@@ -4,11 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Breweries in United States</title>
-    <link rel="stylesheet" href="style.css">
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="static/css/style.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <!-- Leaflet JavaScript code -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <!-- Leaflet heatmap plugin-->
+    <script type="text/javascript" src="static/js/leaflet-heat.js"></script>
+    <!-- D3 library -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <link rel="stylesheet" href="static/css/style.css">
+
 </head>
 </script>
 <body>
-    
     <div class="main">
 <nav>
     <div class="logo">
@@ -21,10 +30,9 @@
               <div class="col-md-30 jumbotron text-center">
                 <h1>Breweries in United States</h1>
               </div>
-        <li><a href="#" >By States</a></li>
-        <li><a href="#" >Us Map</a></li>
         <button onclick="location.href='https://www.timeout.com/orlando/bars/best-breweries-in-orlando'">I'm Feeling</button>
     </ul>
+    <div id="map"></div>
 </div>
 </body>
 </nav>
