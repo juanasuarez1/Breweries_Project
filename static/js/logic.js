@@ -8,12 +8,13 @@ let myMap = L.map("map", {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
   }).addTo(myMap);
   
-  let brew_json = "../../Resources/data.json";
+  let brew_json = "../../brewery.json";
   d3.json(brew_json).then(function(response) {
     console.log(response);
-    features = response.features;
+    id = response.id;
+   
     let heatArray = [];
-    for (let i = 0; i < features.length; i++) {
+    for (let i = 0; i < features_length; i++) {
       let location = features[i].geometry;
       if (location) {
         //console.log(location);

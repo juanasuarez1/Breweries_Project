@@ -1,14 +1,14 @@
 import numpy as np
 
 import sqlalchemy
-from sqlalchemy.ext.automap import automap_base
+from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import Session
 from sqlalchemy import create_engine, func
+from sqlalchemy import Column, Integer, String
 
-from flask import Flask, jsonify, render_template
+from flask import Flask, jsonify
+from flask_cors import CORS
 
-import flask_cors
-from flask_cors import CORS, cross_origin
 
 #################################################
 # Database Setup
@@ -17,12 +17,28 @@ engine = create_engine("sqlite:///database.sqlite")
 
 
 # # reflect an existing database into a new model
-Base = automap_base()
+Base = declarative_base()
+class Brewery(Base):
+    __tablename__ = "breweries"
+    id = Column(String(50), primary_key=True)
+    name = Column(String(50))
+    brewery_type = Column(String(50))
+    address_1 = Column(String(50))
+    city = Column(String(50))
+    state_province = Column(String(50))
+    postal_code = Column(String(50))
+    country =Column(String(50))
+    longitude = Column(Integer)
+    latitude = Column(Integer)
+    phone = Column(Integer)
+    website_url = Column(String(50))
+
 # reflect the tables
-Base.prepare(autoload_with=engine)
+conn = engine.connect()
+Base.metadata.create_all(engine)
 
 # Save reference to the table
-breweries = Base.classes.brewery_data_df_ordered
+breweries = Base.classes.Brewery
 
 
 #################################################
@@ -37,10 +53,10 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 #################################################
 
 @app.route("/")
-@cross_origin()
+# @cross_origin()
 
-def index():
-    return render_template('index.html')
+# def index():
+#     return render_template('index.html')
 
 def welcome():
     """It worked! List all available api routes."""
@@ -54,14 +70,15 @@ def data():
     # Create our session (link) from Python to the DB
     session = Session(engine)
 
-    """Return a list of all passenger names"""
-    # Query all passengers
-    results = session.query( id.name, breweries.name, breweries.brewery_type, breweries.address_1, breweries.city, breweries.state, breweries.postal_code, breweries.country, breweries.phone, breweries.website).all()
+    """Return a list of all brewery names"""
+    # Query all breweries
+    results = session.query( id.name, breweries.name, breweries.brewery_type, breweries.address_1, breweries.city, breweries.state, breweries.postal_code, breweries.country, breweries.phone, breweries.website_url).all()
     session.close()
 
-# Create a dictionary from the row data and append to a list of all_passengers
+# Create a dictionary from the row data and append to a list of all_breweries
     all_breweries = []
-    for  id, name, brewery_type, address_1, city, state, postal_code, country, phone, website, in results:
+    for  id, name, brewery_type, address_1, city, state, postal_code, country, phone, website_url, in results:
+       
         breweries_dict = {}
 
         breweries_dict["id"] = id
@@ -73,8 +90,7 @@ def data():
         breweries_dict["postal_code"] = postal_code
         breweries_dict["country"] = country
         breweries_dict["phone"] = phone
-        breweries_dict["website"] = website
-
+        breweries_dict["website_url"] = website_url
 
         all_breweries.append(breweries_dict)
 
