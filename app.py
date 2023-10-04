@@ -20,6 +20,8 @@ engine = create_engine("sqlite:///database.sqlite")
 app = Flask (__name__)
 CORS(app)
 
+
+### Api route #####
 @app.route("/")
 def welcome():
     """List all available api routes."""
@@ -28,7 +30,9 @@ def welcome():
         f"/api/v1.0/locations<br/>"
         f"api/v1.0/geoJSON<br/>"
     )
-
+    
+################
+## Table name ###
 @app.route("/api/v1.0/locations")
 def locations():
     with engine.connect() as conn:
@@ -38,6 +42,7 @@ def locations():
 
     return jsonify(data)
 
+### Table to Features ###
 @app.route("/api/v1.0/geoJSON")
 def geoJsonify():
     with engine.connect() as conn:
