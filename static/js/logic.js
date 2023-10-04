@@ -15,27 +15,40 @@ let url = "http://127.0.0.1:5000/api/v1.0/geoJSON";
 
 // confirm data import
 d3.json(url).then(function(response) {
-
+  // console.log(response.features[0].geometry.coordinates[0])
   // Create a new marker cluster group.
   let markers = L.markerClusterGroup();
-
+  // var geojsonMarkerOptions = {
+  //   radius: 8,
+  //   fillColor: "#ff7800",
+  //   color: "#000",
+  //   weight: 1,
+  //   opacity: 1,
+  //   fillOpacity: 0.8
+// };
   // Loop through the data.
-  for (let i = 0; i < response.length; i++) {
+  let features = response.features
+  for (let i = 0; i < features.length; i++) {
 
     // Set the data location property to a variable.
-    let features = response[i].features;
+    let feature = response.features[i].geometry;
 
+    // if not null add marker
+    // if (feature !== null){
     // Check for the location property.
-    if (features) {
-
+    if (feature) {
+    if (feature.coordinates[1]){
+    if (feature.coordinates[0]){  
       // Add a new marker to the cluster group, and bind a popup.
-      markers.addLayer(L.marker([features.coordinates[1], features.coordinates[0]])
-        .bindPopup(response[i].descriptor));
+      markers.addLayer(L.marker([feature.coordinates[1], feature.coordinates[0]])
+        .bindPopup(response.descriptor));
+    
     }
 
-  }
+
+  }}}
 
   // Add our marker cluster layer to the map.
   myMap.addLayer(markers);
-  
+
 });
