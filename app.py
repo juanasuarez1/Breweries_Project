@@ -52,6 +52,9 @@ def geoJsonify():
     with engine.connect() as conn:
         result = conn.execute('SELECT * FROM database')
 
+
+        #### The dictionary contains the values of the columns in the row. 
+        #### The list comprehension returns a list of dictionaries.
         geoData = [dict(row) for row in result]
 
         geoJson = {
@@ -67,6 +70,8 @@ def geoJsonify():
             } for d in geoData if (d['longitude'] != '' and d['latitude'] != '')]
         }
 
+    #### Create a GeoJSON object from a list of dictionaries. 
+    #### This can be useful for visualizing data on a map, or for other purposes.
     return jsonify(geoJson)
 
 if __name__ == '__main__':
