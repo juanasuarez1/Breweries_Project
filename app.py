@@ -30,8 +30,12 @@ def welcome():
         f"/api/v1.0/locations<br/>"
         f"api/v1.0/geoJSON<br/>"
     )
-    
+
+
 ################
+## In this updated code, we have added two new API routes: `/api/v1.0/locations` and `/api/v1.0/geoJSON`. 
+## The `/api/v1.0/locations` route returns a list of locations in JSON format, while the `/api/v1.0/geoJSON` route returns a geoJSON representation of the locations.
+### The `locations` variable is a list of dictionaries
 ## Table name ###
 @app.route("/api/v1.0/locations")
 def locations():
