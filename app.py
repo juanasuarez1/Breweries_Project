@@ -28,7 +28,7 @@ def welcome():
     return (
         f"Available Routes:<br/>"
         f"/api/v1.0/locations<br/>"
-        f"api/v1.0/geoJSON<br/>"
+        f"/api/v1.0/geoJSON<br/>"
     )
 
 

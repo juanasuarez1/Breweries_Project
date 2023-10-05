@@ -41,7 +41,9 @@ d3.json(url).then(function(response) {
     if (feature.coordinates[0]){  
       // Add a new marker to the cluster group, and bind a popup.
       markers.addLayer(L.marker([feature.coordinates[1], feature.coordinates[0]])
-        .bindPopup(response.descriptor));
+        .bindPopup("<strong>" + response.features[i].properties.name + "</strong><br /><br />" +
+        response.features[i].properties.city + ", " + response.features[i].properties.state_province +
+         "</strong><br /><br/> Type: " + response.features[i].properties.brewery_type));
     
     }
 
