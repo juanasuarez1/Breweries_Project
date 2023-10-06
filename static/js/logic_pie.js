@@ -51,41 +51,28 @@ console.log(contract)
 console.log(proprietor)
 console.log(closed)
 
-const ctx = document.getElementById('myChart')
+
+const ctx = document.getElementById('myChart');
+
+  new Chart(ctx, {
+    type: 'pie',
+    data: {
+      labels: ['nano', 'micro', 'regional', 'brewpub', 'large', 'planning', 'bar', 'contract', 'proprietor', 'closed'],
+      datasets: [{
+        label: 'Count of Brewery Types',
+        data: [nano, micro, regional, brewpub, large, planning, bar, contract, proprietor, closed],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
 
 
-const data = {
-    labels: [
-      'nano',
-      'micro',
-      'regional',
-      'brewpub',
-      'large',
-      'planning',
-      'bar',
-      'contract',
-      'proprietor',
-      'closed'
 
-
-    ],
-    datasets: [{
-      label: 'My First Dataset',
-      data: [nano, micro, regional, brewpub, large, planning, bar, contract, proprietor, closed],
-      backgroundColor: [
-        'rgb(255, 99, 132)',
-        'rgb(54, 162, 235)',
-        'rgb(255, 205, 86)',
-        'rgb(35, 16, 335)',
-        'rgb(86, 78, 132)',
-        'rgb(255, 133, 321)',
-        'rgb(27, 99, 44)',
-        'rgb(27, 99, 44)',
-        'rgb(27, 99, 44)',
-        'rgb(27, 99, 44)'
-
-      ],
-      hoverOffset: 4
-    }]
-  };
 });
