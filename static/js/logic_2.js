@@ -80,12 +80,16 @@ const ctx = document.getElementById('myChart');
 },
   options: {
     scales: {
-x: {
-ticks: {
-color: ['black']     } },
-y: {         
-ticks: {              
-color: ['black']         }     },       
+      x: {
+        ticks: {
+        color: ['black']    
+      } 
+      },
+      y: {         
+        ticks: {              
+        color: ['black']         
+      }     
+      },       
 beginAtZero: true      
 } 
 } 
