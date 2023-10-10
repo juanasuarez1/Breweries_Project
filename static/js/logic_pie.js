@@ -54,24 +54,31 @@ console.log(closed)
 
 const ctx = document.getElementById('myChart');
 
-  new Chart(ctx, {
-    type: 'pie',
-    data: {
-      labels: ['nano', 'micro', 'regional', 'brewpub', 'large', 'planning', 'bar', 'contract', 'proprietor', 'closed'],
-      datasets: [{
-        label: 'Count of Brewery Types',
-        data: [nano, micro, regional, brewpub, large, planning, bar, contract, proprietor, closed],
-        borderWidth: 1
-      }]
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true
-        }
+new Chart(ctx, {
+  type: 'pie',
+  
+  font: {
+      size: 16},
+  data: {
+    labels: ['nano', 'micro', 'regional', 'brewpub', 'large', 'planning', 'bar', 'contract', 'proprietor', 'closed'],
+    datasets: [{
+      label: 'Count of Brewery Types',
+      data: [nano, micro, regional, brewpub, large, planning, bar, contract, proprietor, closed],
+      borderWidth: 1
+    }]
+  },
+  options: {responsive: true,
+      maintainAspectRatio: false,
+    scale: {
+      pointLabels :{
+          fontStyle: "bold"},
+
+      y: {
+        beginAtZero: true
       }
     }
-  });
+  }
+});
 
 
 

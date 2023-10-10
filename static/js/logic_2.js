@@ -73,20 +73,21 @@ const ctx = document.getElementById('myChart');
       datasets: [{
         label: 'Number of Locations in States',
         data: [Florida, Texas, California, Oklahoma, Colorado, Washington, Minnesota, Massachusetts, Arizona, Alaska, Georgia, Hawaii],
-        backgroundColor: 'rgba(75, 192, 192, 0.2)',
-        borderColor: 'rgba(75, 192, 192, 1)',
+        backgroundColor: 'rgba(255, 0, 0, 255)',
+        borderColor: 'rgba(0, 0, 0, 5)',
         borderWidth: 1
     }]
 },
-options: {
-  scales: {
-    y: {
-      beginAtZero: true
-    }
-  }
-}
-});
-
-
-
+  options: {
+    scales: {
+x: {
+ticks: {
+color: ['black']     } },
+y: {         
+ticks: {              
+color: ['black']         }     },       
+beginAtZero: true      
+} 
+} 
+});    
 });
